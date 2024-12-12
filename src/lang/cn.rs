@@ -43,7 +43,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("allowed characters", "使用允许的字符"),
         ("id_change_tip", "只可以使用字母 a-z, A-Z, 0-9, _ (下划线)。首字母必须是 a-z, A-Z。长度在 6 与 16 之间。"),
         ("Website", "网站"),
-        ("About", "关于"),
+        ("About", "远控世界，唯爱何思，远控黄荷！"),
         ("Slogan_tip", "远控世界，唯爱何思，远控黄荷！"),
         ("Privacy Statement", "远控世界，唯爱何思，远控黄荷！"),
         ("Mute", "静音"),
