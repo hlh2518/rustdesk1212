@@ -45,6 +45,8 @@ env:
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
 
+
+
 jobs:
   generate-bridge:
     uses: ./.github/workflows/bridge.yml
@@ -227,6 +229,7 @@ jobs:
             }
          
     steps:
+     
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
@@ -305,8 +308,10 @@ jobs:
           vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
           doNotCache: false
 
+       
       - name: Install vcpkg dependencies
         run: |
+         chmod +x ./flutter/build_android_deps.sh
           case ${{ matrix.job.target }} in
             aarch64-linux-android)
               ANDROID_TARGET=arm64-v8a
@@ -327,6 +332,8 @@ jobs:
             exit 1
           fi
         shell: bash
+
+
 
       - name: Restore bridge files
         uses: actions/download-artifact@master
@@ -364,12 +371,14 @@ jobs:
           cargo install cargo-ndk --version ${{ env.CARGO_NDK_VERSION }} --locked
           case ${{ matrix.job.target }} in
             aarch64-linux-android)
+             chmod +x ./flutter/ndk_arm64.sh
               ./flutter/ndk_arm64.sh
               mkdir -p ./flutter/android/app/src/main/jniLibs/arm64-v8a
               cp ./target/${{ matrix.job.target }}/release/liblibrustdesk.so ./flutter/android/app/src/main/jniLibs/arm64-v8a/librustdesk.so
             ;;
             armv7-linux-androideabi)
-              ./flutter/ndk_arm.sh
+             chmod +x ./flutter/ndk_arm.sh
+              ./flutter/ndk_arm.sh              
               mkdir -p ./flutter/android/app/src/main/jniLibs/armeabi-v7a
               cp ./target/${{ matrix.job.target }}/release/liblibrustdesk.so ./flutter/android/app/src/main/jniLibs/armeabi-v7a/librustdesk.so
             ;;
