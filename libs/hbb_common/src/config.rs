@@ -101,8 +101,8 @@ const CHARS: &[char] = &[
 ];
 
 pub const RENDEZVOUS_SERVERS: &[&str] = &["hshe.tpddns.cn"];
-//pub const PUBLIC_RS_PUB_KEY: &str = "9GbH+G1TWhA6EdZduUIQY3U+y3KKQAHiMHKb81Xc7P0=";
-pub const PUBLIC_RS_PUB_KEY: &str = "LDrR09qhMFtNsQILr+bjTtqkDeTbcRjU7Ce38fh85oM=";
+
+pub const PUBLIC_RS_PUB_KEY: &str = "4p9LCwNvCULIdTUe5v143aBiron+fYexyN3Pp2N2b5I=";
 
 pub const RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
     Some(key) if !key.is_empty() => key,
